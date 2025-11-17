@@ -6,13 +6,14 @@ form.addEventListener("submit", function (e) {
   e.preventDefault();
   var name = e.target.name.value;
   var model = e.target.model.value;
-  var url = e.target.url.value;
+  var url = e.target.url.files[0];
   if (name && model && url) {
     const card = document.createElement("div");
+    var imageUrl = URL.createObjectURL(url);
     card.classList.add("smallbox");
     card.innerHTML = `
       <div class="top">
-        <img src="${url}">
+        <img src="${imageUrl}">
       </div>
       <div class="bottom">
         <h1>${name}</h1>
